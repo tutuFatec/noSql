@@ -6,6 +6,14 @@ conecao = redis.Redis (
     db=0
 )
 
+'''
+    nome da Key = carrrinho
+    sadd é como se um conjunto 
+        ver como usar como inserir o no sadd 
+        ver como usar deletar do sadd 
+'''
+
+
 def inserir():
     print('teste')
 
