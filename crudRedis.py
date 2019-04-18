@@ -12,13 +12,12 @@ conecao = redis.Redis (
 
 '''
     nome da Key = carrrinho
-    sadd e como se um conjunto 
-        ver como usar como inserir o no sadd 
-        ver como usar deletar do sadd 
+    sadd é como se um conjunto 
+    ver como usar como inserir o no sadd 
+    ver como usar deletar do sadd 
 '''
 
 key = "carrinho"
-
 print(key)
 
 def inserir():
