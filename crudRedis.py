@@ -2,6 +2,8 @@
 
 import redis
 
+global conecao
+
 conecao = redis.Redis (
     host='localhost',
     port=6379,
@@ -15,17 +17,19 @@ conecao = redis.Redis (
         ver como usar deletar do sadd 
 '''
 
-key = 'carrrinho'
+key = "carrinho"
+
+print(key)
 
 def inserir():
     print('teste')
 
 def ler(key):
-    conecao.smembers(key)
-    print('teste')
+    return conecao.smembers(key)
 
-def alterar():
-    print('teste')
+def alterar(key, editar, editado):
+    print(conecao.srem(key, editar))
+    conecao.sadd(key, editado)
 
 def excluir():
     print('teste')
@@ -38,13 +42,17 @@ while True:
     print('4- Deletar um Produto')
 
     opcao = input()
+    print('\n')
 
     if (opcao == 1):
         inserir()
     elif (opcao == 2):
-        ler(key)
+        print(ler(key))
+        print('\n')
     elif (opcao == 3):
-        alterar()
+        editar = raw_input('Qual produto voce deseja alterar?')
+        editado = raw_input('Qual produto deseja adicionar?')
+        print("Deu certo ", alterar(key, editar, editado))
     elif (opcao == 4):
         excluir()
 
