@@ -20,8 +20,9 @@ conecao = redis.Redis (
 key = "carrinho"
 print(key)
 
-def inserir():
-    print('teste')
+def inserir(key,valor):
+    conecao.sadd(key, valor)
+    #print('teste')
 
 def ler(key):
     return conecao.smembers(key)
@@ -30,8 +31,9 @@ def alterar(key, editar, editado):
     print(conecao.srem(key, editar))
     conecao.sadd(key, editado)
 
-def excluir():
-    print('teste')
+def excluir(key, valor):
+    conecao.srem(key, valor)
+    #print('teste')
 
 while True:
     print('Escolha uma opção: \n')
@@ -44,7 +46,8 @@ while True:
     print('\n')
 
     if (opcao == 1):
-        inserir()
+        valor = raw_input('Adicionar item no carrinho')
+        inserir(key, valor)
     elif (opcao == 2):
         print(ler(key))
         print('\n')
@@ -52,8 +55,9 @@ while True:
         editar = raw_input('Qual produto voce deseja alterar?')
         editado = raw_input('Qual produto deseja adicionar?')
         print("Deu certo ", alterar(key, editar, editado))
-    elif (opcao == 4):
-        excluir()
+    elif (opcao == 4):]
+        valor = raw_input('Qual item deseja retirar do carrinho?')
+        excluir(key, valor)
 
 conecao.set('foo', 'bar')
 value = conecao.get('foo')
